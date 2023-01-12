@@ -11,7 +11,11 @@ export class ProductService {
 
     }
 
-    async all(){
+    async all() : Promise<Product[]>{
         return this.productModel.find().exec();
+    }
+
+    async create(data) : Promise<Product>{
+        return new this.productModel(data).save();
     }
 }
