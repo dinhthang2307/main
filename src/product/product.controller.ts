@@ -14,13 +14,28 @@ export class ProductController {
     }
 
     @EventPattern('product_created')
-    async create(product: any){
+    async productCreated(product: any){
         await this.productService.create({
             title: product.title,
             image: product.image,
             like: product.likes,
             id: product.id
         });
+    }
+
+    @EventPattern('product_updated')
+    async productUpdated(product: any){
+        await this.productService.update(product.id, {
+            title: product.title,
+            image: product.image,
+            like: product.likes,
+            id: product.id
+        });
+    }
+
+    @EventPattern('product_deleted')
+    async productDeleted(id: number){
+        await this.productService.delete(id);
     }
 
     @EventPattern('hello')
