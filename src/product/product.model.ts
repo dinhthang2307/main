@@ -10,7 +10,7 @@ export class Product {
   @Prop()
   image: string;
   @Prop()
-  like: string;
+  like: number;
   @Prop()
   id: number;
 }
